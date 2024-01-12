@@ -5,22 +5,15 @@ firstInputRef.focus();
 inputRef.forEach(input => {
 
     input.addEventListener('input', e => {
-        if (isNaN(e.target.value) || e.target.value == ' ') {
-            e.target.value = '';
-        }
-        if (e.target.value != '') {
-            const nextInput = e.target.nextElementSibling;
-            if (nextInput) {
-                nextInput.focus();
-            }
+        if( e.target.value ){
+            e.target.value = e.target.value%10;
+            e.target.nextElementSibling?.focus();
         }
     })
     input.addEventListener('keyup', e => {
         if (e.key === 'Backspace' || e.key === 'Delete') {
-            const prevInput = e.target.previousElementSibling;
-            if (prevInput) {
-                prevInput.focus();
-            }
+            e.target.value="";
+            e.target.previousElementSibling?.focus();
         }
     })
 })
